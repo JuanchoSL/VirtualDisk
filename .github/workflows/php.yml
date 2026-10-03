@@ -30,6 +30,7 @@ jobs:
         uses: shivammathur/setup-php@main
         with:
           php-version: ${{ matrix.php-versions }}
+          ini-values: phar.readonly=Off
           extensions: ftp,pcntl,openssl,ssh2,curl,sockets,zip,xml,fileinfo
 
       - uses: actions/checkout@main
