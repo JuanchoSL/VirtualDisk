@@ -1,0 +1,59 @@
+{
+    "name": "juanchosl/virtualdisk",
+    "description": "Little methods collection in order to use some data repositories as local files",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/JuanchoSL/VirtualDisk",
+    "keywords": [
+        "files",
+        "directories",
+        "VirtualDisk",
+        "disks"
+    ],
+    "authors": [
+        {
+            "name": "Juan Sánchez Lecegui",
+            "email": "Juan.Sanchez@tecnicosweb.com",
+            "homepage": "https://www.linkedin.com/in/juansanchezlecegui/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "fig/http-message-util": "1.1.*",
+        "psr/http-message": "^2.0",
+        "psr/http-factory": "1.1.*",
+        "psr/http-client": "1.0.*",
+        "psr/simple-cache": "3.0.*",
+        "psr/log": "^3.0",
+        "juanchosl/httpdata": "1.0.*",
+        "juanchosl/validators": "1.0.*@dev",
+        "juanchosl/curlclient": "1.0.*@dev",
+        "juanchosl/ftpclient": "1.0.*@dev",
+        "juanchosl/datamanipulation": "1.0.*@dev",
+        "juanchosl/simplecache": "1.0.*",
+        "juanchosl/exceptions": "1.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "phpstan/phpstan": "^1.12",
+        "juanchosl/envvars": "1.0.*",
+        "juanchosl/requestlistener": "1.0.*",
+        "juanchosl/logger": "1.1.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "JuanchoSL\\VirtualDisk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JuanchoSL\\VirtualDisk\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "tests": "vendor/bin/phpunit --configuration phpunit.xml tests",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=256M -c phpstan.neon"
+    }
+}
