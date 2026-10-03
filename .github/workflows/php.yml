@@ -26,14 +26,20 @@ jobs:
         dependencies: ["install", "update"]
 
     steps:
+      - uses: actions/checkout@main
+
+      - name: Set up Docker
+        uses: docker/setup-docker-action@master
+
+      - name: Run Docker Compose
+        run: docker compose up -d
+      
       - name: Setup PHP
         uses: shivammathur/setup-php@main
         with:
           php-version: ${{ matrix.php-versions }}
           ini-values: phar.readonly=Off
           extensions: ftp,pcntl,openssl,ssh2,curl,sockets,zip,xml,fileinfo
-
-      - uses: actions/checkout@main
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict

@@ -2,15 +2,10 @@ services:
   nginx-webdav:
     image: baksili/webdav-server:latest
     container_name: webdav
-    restart: unless-stopped
     ports:
-      - "80:80/tcp"
-    volumes:
-      - "./data:/media/data"
+      - "8081:80/tcp"
+
     environment:
       - USERNAME=user
       - PASSWORD=pass
 
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://user:pass@localhost"]
-      interval: 60s
