@@ -32,8 +32,11 @@ jobs:
         uses: docker/setup-docker-action@master
 
       - name: Run Docker Compose
-        run: docker compose up -d
+        run: docker compose up -d --force-recreate
       
+      - name: Wait for services
+        run: sleep 5
+
       - name: Setup PHP
         uses: shivammathur/setup-php@main
         with:
@@ -61,3 +64,7 @@ jobs:
         #run: vendor/bin/phpunit --configuration phpunit.xml --exclude 'SFtpTest' --exclude 'FtpsTest'
         #run: vendor/bin/phpunit --configuration phpunit.xml --filter 'FtpTest'
         #run: vendor/bin/phpunit --configuration phpunit.xml tests/Unit/Native/FtpTest.php
+      
+      - name: Tear Down Docker Compose
+        if: always()
+        run: docker compose down
